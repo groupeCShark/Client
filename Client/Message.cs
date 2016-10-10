@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace Client
 {
 
-    // test commit oliver
-    class Message
+   class Message
     {
         public string Username { get; set; }
         public string Text { get; set; }
