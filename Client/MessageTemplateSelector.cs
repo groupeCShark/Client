@@ -19,7 +19,7 @@ namespace Client
                 return null;
 
             FrameworkElement frameworkElement = container as FrameworkElement;
-            Client.MainWindow.Message message = item as Client.MainWindow.Message;
+            Message message = item as Message;
             if (frameworkElement != null)
             {
                 bool myMessage = message.Username.Equals("Me");

@@ -27,7 +27,7 @@
         </Grid.ColumnDefinitions>
         
         <ScrollViewer Margin="8" VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
-            <ListView ItemsSource="{Binding}" ItemTemplateSelector="{StaticResource messageTemplateSelector}">
+            <ListView ItemsSource="{Binding Messages}" ItemTemplateSelector="{StaticResource messageTemplateSelector}">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Focusable" Value="False"/>
