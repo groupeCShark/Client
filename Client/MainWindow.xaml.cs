@@ -21,17 +21,25 @@ namespace Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MessageViewModel messageViewModel = new MessageViewModel();
+        private MessageViewModel messageViewModel;
 
         public MainWindow()
         {
             InitializeComponent();
+            messageViewModel = new MessageViewModel();
             this.DataContext = messageViewModel;
         }
 
         private void SendAction(object sender, RoutedEventArgs e)
         {
-            messageViewModel.Messages.Add(new Message() { Username = "Me", Text = TextInput.Text });
+            string textInputContent = TextInput.Text;
+            if (textInputContent.Contains("!connect")) {
+                string usernameToStartSessionWith = textInputContent.Substring("!connect ".Length);
+                messageViewModel.StartSessionWith(usernameToStartSessionWith);
+            } else {
+                messageViewModel.Messages.Add(new Message() { Username = "Me", Text = TextInput.Text });
+                messageViewModel.SendMessage(textInputContent);
+            }
             TextInput.Text = "";
         }
     }
