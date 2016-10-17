@@ -13,6 +13,8 @@ namespace Client
         public event PropertyChangedEventHandler PropertyChanged;
         private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
         public NetworkManager client;
+        public string Username = "Htime";
+        public string Recipient;
 
         public ObservableCollection<Message> Messages
         {
@@ -23,40 +25,39 @@ namespace Client
             }
         }
 
-        public void Authentification() {
-            if (client.IsConnected) {
-                string username = "Htime";
-                List<string> pendingUsernames = client.Authentification(username);
-                if (pendingUsernames.Any())
-                {
-                    Messages.Add(new Message() { Username = "Server", Text = "Please select a user to start session with (!connect <username>):\n" + string.Join(", ", pendingUsernames.ToArray()) });
-                }
-                else
-                {
-                    Messages.Add(new Message() { Username = "Server", Text = "No user is connected..." });
-                }
-            }
+        private void PrintNetworkErrorMessage(string Message)
+        {
+            Messages.Add(new Message() { Username = "Server", Text = "Network issue: Unreachable server (" + Message + ")" });
         }
 
-        public void StartSessionWith(string username) {
-            if (client.IsConnected) {
-                client.StartSessionWith(username);
-                _messages.Clear();
+        public bool Authentification() {
+            List<string> pendingUsernames = client.Authentification(Username);
+            if (pendingUsernames != null)
+            {
+                Messages.Add(new Message() { Username = "Server", Text = "Please select a user to start session with (!connect <username>):\n" + string.Join(", ", pendingUsernames.ToArray()) });
+                return true;
             }
+            return false;
         }
 
-        public void SendMessage(string text) {
-            if (client.IsConnected) {
-                client.SendMessage(text);
+        public void StartSessionWith(string Recipient)
+        {
+            Messages.Clear();
+            this.Recipient = Recipient;
+        }
+
+        public void SendMessage(string Text) {
+            bool connected = client.SendMessage(Username, Text);
+            if (!connected) {
+                PrintNetworkErrorMessage("SendMessage");
             }
         }
 
         public MessageViewModel() {
             client = new NetworkManager(this);
-            if (!client.IsConnected) {
-                Messages.Add(new Message() { Username = "Server", Text = "Network issue: Unreachable server..." });
-            } else {
-                this.Authentification();
+            bool connected = Authentification();
+            if (!connected) {
+                PrintNetworkErrorMessage("MessageViewModel's constructor");
             }
             
             //_messages.Add(new Message() { Username = "Server", Text = "Hello from the server" });

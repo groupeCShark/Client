@@ -8,62 +8,62 @@
       <xsd:import schemaLocation="http://localhost:53942/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService1_auth_InputMessage">
-    <wsdl:part name="parameters" element="tns:auth" />
+  <wsdl:message name="IService1_Auth_InputMessage">
+    <wsdl:part name="parameters" element="tns:Auth" />
   </wsdl:message>
-  <wsdl:message name="IService1_auth_OutputMessage">
-    <wsdl:part name="parameters" element="tns:authResponse" />
+  <wsdl:message name="IService1_Auth_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_startSession_InputMessage">
-    <wsdl:part name="parameters" element="tns:startSession" />
+  <wsdl:message name="IService1_StartSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartSession" />
   </wsdl:message>
-  <wsdl:message name="IService1_startSession_OutputMessage">
-    <wsdl:part name="parameters" element="tns:startSessionResponse" />
+  <wsdl:message name="IService1_StartSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartSessionResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_send_InputMessage">
-    <wsdl:part name="parameters" element="tns:send" />
+  <wsdl:message name="IService1_Send_InputMessage">
+    <wsdl:part name="parameters" element="tns:Send" />
   </wsdl:message>
-  <wsdl:message name="IService1_send_OutputMessage">
-    <wsdl:part name="parameters" element="tns:sendResponse" />
+  <wsdl:message name="IService1_Send_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_endSession_InputMessage">
-    <wsdl:part name="parameters" element="tns:endSession" />
+  <wsdl:message name="IService1_EndSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:EndSession" />
   </wsdl:message>
-  <wsdl:message name="IService1_endSession_OutputMessage">
-    <wsdl:part name="parameters" element="tns:endSessionResponse" />
+  <wsdl:message name="IService1_EndSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EndSessionResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_logout_InputMessage">
-    <wsdl:part name="parameters" element="tns:logout" />
+  <wsdl:message name="IService1_Logout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Logout" />
   </wsdl:message>
-  <wsdl:message name="IService1_logout_OutputMessage">
-    <wsdl:part name="parameters" element="tns:logoutResponse" />
+  <wsdl:message name="IService1_Logout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
-    <wsdl:operation name="auth">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/auth" message="tns:IService1_auth_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/authResponse" message="tns:IService1_auth_OutputMessage" />
+    <wsdl:operation name="Auth">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Auth" message="tns:IService1_Auth_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AuthResponse" message="tns:IService1_Auth_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="startSession">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/startSession" message="tns:IService1_startSession_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/startSessionResponse" message="tns:IService1_startSession_OutputMessage" />
+    <wsdl:operation name="StartSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/StartSession" message="tns:IService1_StartSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/StartSessionResponse" message="tns:IService1_StartSession_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="send">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/send" message="tns:IService1_send_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/sendResponse" message="tns:IService1_send_OutputMessage" />
+    <wsdl:operation name="Send">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Send" message="tns:IService1_Send_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SendResponse" message="tns:IService1_Send_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="endSession">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/endSession" message="tns:IService1_endSession_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/endSessionResponse" message="tns:IService1_endSession_OutputMessage" />
+    <wsdl:operation name="EndSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EndSession" message="tns:IService1_EndSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EndSessionResponse" message="tns:IService1_EndSession_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="logout">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/logout" message="tns:IService1_logout_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/logoutResponse" message="tns:IService1_logout_OutputMessage" />
+    <wsdl:operation name="Logout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Logout" message="tns:IService1_Logout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LogoutResponse" message="tns:IService1_Logout_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="auth">
-      <soap:operation soapAction="http://tempuri.org/IService1/auth" style="document" />
+    <wsdl:operation name="Auth">
+      <soap:operation soapAction="http://tempuri.org/IService1/Auth" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -71,8 +71,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="startSession">
-      <soap:operation soapAction="http://tempuri.org/IService1/startSession" style="document" />
+    <wsdl:operation name="StartSession">
+      <soap:operation soapAction="http://tempuri.org/IService1/StartSession" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -80,8 +80,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="send">
-      <soap:operation soapAction="http://tempuri.org/IService1/send" style="document" />
+    <wsdl:operation name="Send">
+      <soap:operation soapAction="http://tempuri.org/IService1/Send" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -89,8 +89,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="endSession">
-      <soap:operation soapAction="http://tempuri.org/IService1/endSession" style="document" />
+    <wsdl:operation name="EndSession">
+      <soap:operation soapAction="http://tempuri.org/IService1/EndSession" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -98,8 +98,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="logout">
-      <soap:operation soapAction="http://tempuri.org/IService1/logout" style="document" />
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://tempuri.org/IService1/Logout" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

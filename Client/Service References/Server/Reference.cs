@@ -15,9 +15,9 @@ namespace Client.Server {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LogRes", Namespace="http://schemas.datacontract.org/2004/07/ServeurCShark")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LogResult", Namespace="http://schemas.datacontract.org/2004/07/ServeurCShark")]
     [System.SerializableAttribute()]
-    public partial class LogRes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class LogResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -78,35 +78,35 @@ namespace Client.Server {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Server.IService1")]
     public interface IService1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/auth", ReplyAction="http://tempuri.org/IService1/authResponse")]
-        Client.Server.LogRes auth(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Auth", ReplyAction="http://tempuri.org/IService1/AuthResponse")]
+        Client.Server.LogResult Auth(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/auth", ReplyAction="http://tempuri.org/IService1/authResponse")]
-        System.Threading.Tasks.Task<Client.Server.LogRes> authAsync(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Auth", ReplyAction="http://tempuri.org/IService1/AuthResponse")]
+        System.Threading.Tasks.Task<Client.Server.LogResult> AuthAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/startSession", ReplyAction="http://tempuri.org/IService1/startSessionResponse")]
-        bool startSession(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/StartSession", ReplyAction="http://tempuri.org/IService1/StartSessionResponse")]
+        bool StartSession(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/startSession", ReplyAction="http://tempuri.org/IService1/startSessionResponse")]
-        System.Threading.Tasks.Task<bool> startSessionAsync(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/StartSession", ReplyAction="http://tempuri.org/IService1/StartSessionResponse")]
+        System.Threading.Tasks.Task<bool> StartSessionAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/send", ReplyAction="http://tempuri.org/IService1/sendResponse")]
-        bool send(string message);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Send", ReplyAction="http://tempuri.org/IService1/SendResponse")]
+        bool Send(string Username, string Message);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/send", ReplyAction="http://tempuri.org/IService1/sendResponse")]
-        System.Threading.Tasks.Task<bool> sendAsync(string message);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Send", ReplyAction="http://tempuri.org/IService1/SendResponse")]
+        System.Threading.Tasks.Task<bool> SendAsync(string Username, string Message);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/endSession", ReplyAction="http://tempuri.org/IService1/endSessionResponse")]
-        bool endSession();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EndSession", ReplyAction="http://tempuri.org/IService1/EndSessionResponse")]
+        bool EndSession();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/endSession", ReplyAction="http://tempuri.org/IService1/endSessionResponse")]
-        System.Threading.Tasks.Task<bool> endSessionAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EndSession", ReplyAction="http://tempuri.org/IService1/EndSessionResponse")]
+        System.Threading.Tasks.Task<bool> EndSessionAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/logout", ReplyAction="http://tempuri.org/IService1/logoutResponse")]
-        void logout();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Logout", ReplyAction="http://tempuri.org/IService1/LogoutResponse")]
+        void Logout();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/logout", ReplyAction="http://tempuri.org/IService1/logoutResponse")]
-        System.Threading.Tasks.Task logoutAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Logout", ReplyAction="http://tempuri.org/IService1/LogoutResponse")]
+        System.Threading.Tasks.Task LogoutAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -136,44 +136,44 @@ namespace Client.Server {
                 base(binding, remoteAddress) {
         }
         
-        public Client.Server.LogRes auth(string username) {
-            return base.Channel.auth(username);
+        public Client.Server.LogResult Auth(string username) {
+            return base.Channel.Auth(username);
         }
         
-        public System.Threading.Tasks.Task<Client.Server.LogRes> authAsync(string username) {
-            return base.Channel.authAsync(username);
+        public System.Threading.Tasks.Task<Client.Server.LogResult> AuthAsync(string username) {
+            return base.Channel.AuthAsync(username);
         }
         
-        public bool startSession(string username) {
-            return base.Channel.startSession(username);
+        public bool StartSession(string username) {
+            return base.Channel.StartSession(username);
         }
         
-        public System.Threading.Tasks.Task<bool> startSessionAsync(string username) {
-            return base.Channel.startSessionAsync(username);
+        public System.Threading.Tasks.Task<bool> StartSessionAsync(string username) {
+            return base.Channel.StartSessionAsync(username);
         }
         
-        public bool send(string message) {
-            return base.Channel.send(message);
+        public bool Send(string Username, string Message) {
+            return base.Channel.Send(Username, Message);
         }
         
-        public System.Threading.Tasks.Task<bool> sendAsync(string message) {
-            return base.Channel.sendAsync(message);
+        public System.Threading.Tasks.Task<bool> SendAsync(string Username, string Message) {
+            return base.Channel.SendAsync(Username, Message);
         }
         
-        public bool endSession() {
-            return base.Channel.endSession();
+        public bool EndSession() {
+            return base.Channel.EndSession();
         }
         
-        public System.Threading.Tasks.Task<bool> endSessionAsync() {
-            return base.Channel.endSessionAsync();
+        public System.Threading.Tasks.Task<bool> EndSessionAsync() {
+            return base.Channel.EndSessionAsync();
         }
         
-        public void logout() {
-            base.Channel.logout();
+        public void Logout() {
+            base.Channel.Logout();
         }
         
-        public System.Threading.Tasks.Task logoutAsync() {
-            return base.Channel.logoutAsync();
+        public System.Threading.Tasks.Task LogoutAsync() {
+            return base.Channel.LogoutAsync();
         }
     }
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServeurCShark" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServeurCShark" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:53942/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:complexType name="LogRes">
+  <xs:complexType name="LogResult">
     <xs:sequence>
       <xs:element minOccurs="0" name="ConnectRes" type="xs:boolean" />
       <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserList" nillable="true" type="q1:ArrayOfstring" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="LogRes" nillable="true" type="tns:LogRes" />
+  <xs:element name="LogResult" nillable="true" type="tns:LogResult" />
 </xs:schema>
