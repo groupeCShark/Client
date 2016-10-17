@@ -15,7 +15,7 @@ namespace Client
         {
             get
             {
-                return server == null;
+                return server != null;
             }
         }
 
@@ -38,14 +38,14 @@ namespace Client
         }
 
         public void ReceiveMessage(string Username, string Text) {
-            Message message = new Message() { Username = Username, Text = Text };
+            Message message = new Message() { Username = Username, Text = Crypto.Decrypt(Text) };
             this.messageViewModel.Messages.Add(message);
         }
 
         public bool SendMessage(string message) {
             // Test
-            ReceiveMessage("God", "Release the Kraken!");
-            return server.send(message);
+            ReceiveMessage("God", Crypto.Encrypt("Release the Kraken!"));
+            return server.send(Crypto.Encrypt(message));
         }
     }
 }

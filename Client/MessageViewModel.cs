@@ -33,7 +33,7 @@ namespace Client
                 }
                 else
                 {
-                    Messages.Add(new Message() { Username = "Server", Text = "Network issue: Unreachable server..." });
+                    Messages.Add(new Message() { Username = "Server", Text = "No user is connected..." });
                 }
             }
         }

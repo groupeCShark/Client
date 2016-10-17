@@ -39,12 +39,12 @@ namespace Client
                 }
             }
 
-            return Encoding.UTF8.GetString(encrypted);
+            return System.Convert.ToBase64String(encrypted);
         }
 
         public static string Decrypt(string cipherText)
         {
-            byte[] cipher = Encoding.UTF8.GetBytes(cipherText);
+            byte[] cipher = System.Convert.FromBase64String(cipherText);
             byte[] key = Encoding.UTF8.GetBytes(keyString);
             byte[] iv = Encoding.UTF8.GetBytes(ivString);
 
