@@ -14,11 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Client
+namespace CSharkClient
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private MessageViewModel messageViewModel;
@@ -33,14 +30,14 @@ namespace Client
         private void SendAction(object sender, RoutedEventArgs e)
         {
             string textInputContent = TextInput.Text;
-            if (textInputContent.Contains("!connect")) {
-                string usernameToStartSessionWith = textInputContent.Substring("!connect ".Length);
-                messageViewModel.StartSessionWith(usernameToStartSessionWith);
-            } else {
-                messageViewModel.Messages.Add(new Message() { Username = "Me", Text = TextInput.Text });
-                messageViewModel.SendMessage(textInputContent);
-            }
+            messageViewModel.Messages.Add(new Message() { Username = "Me", Text = TextInput.Text });
+            messageViewModel.SendMessage(textInputContent);
             TextInput.Text = "";
+        }
+
+        void ClosingWindow(object sender, EventArgs e)
+        {
+            messageViewModel.Logout();
         }
     }
 }

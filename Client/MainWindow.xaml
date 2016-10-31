@@ -1,8 +1,9 @@
-﻿<Window x:Class="Client.MainWindow"
+﻿<Window x:Class="CSharkClient.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Local="clr-namespace:Client"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:Local="clr-namespace:CSharkClient"
+        Title="CSharkChat" Height="350" Width="525"
+        Closed="ClosingWindow">
     <Window.Resources>
         <DataTemplate x:Key="MyMessagesTemplate">
             <Grid Margin="4" HorizontalAlignment="Right" Background="#FFDCDCF0">

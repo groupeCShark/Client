@@ -1,53 +1,86 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ServiceModel;
+using CSharkLibrary;
 
-namespace Client
+namespace CSharkClient
 {
+    public class CSharkClientImpl : ICSharkClient
+    {
+        private MessageViewModel messageViewModel;
+
+        public CSharkClientImpl(MessageViewModel messageViewModel)
+        {
+            this.messageViewModel = messageViewModel;
+        }
+
+        public void ReceiveMessage(string username, string text)
+        {
+            Message message = new Message() { Username = username, Text = Crypto.Decrypt(text) };
+            this.messageViewModel.Messages.Add(message);
+        }
+    }
+
     public class NetworkManager
     {
-        private Server.Service1Client server;
+        private ICSharkService server;
         private MessageViewModel messageViewModel;
 
         public NetworkManager(MessageViewModel messageViewModel) {
             this.messageViewModel = messageViewModel;
-            this.server = new Server.Service1Client();
+            var channelFactory = new DuplexChannelFactory<ICSharkService>(new CSharkClientImpl(messageViewModel), "CSharkServiceEndpoint");
+            server = channelFactory.CreateChannel();
         }
 
-        public List<string> Authentification(string Username) {
+        public User[] GetLoggedUsers()
+        {
             try
             {
-                List<string> pendingUsernames = new List<string>();
-                Server.LogResult logResults = server.Auth(Username);
-                pendingUsernames = new List<string>(logResults.UserList);
-                return pendingUsernames;
+                return server.LoggedUsers;
             }
             catch (Exception)
             {
                 return null;
             }
+
         }
 
-        public void ReceiveMessage(string Username, string Text) {
-            Message message = new Message() { Username = Username, Text = Crypto.Decrypt(Text) };
-            this.messageViewModel.Messages.Add(message);
-        }
-
-        public bool SendMessage(string Username, string Message) {
+        public bool Login(string Username)
+        {
             try
             {
-                server.Send(Username, Crypto.Encrypt(Message));
-                ReceiveMessage("God", Crypto.Encrypt("Release the Kraken!"));
+                server.Login(Username);
                 return true;
             }
             catch (Exception)
             {
                 return false;
             }
-            
+        }
+
+        public bool Logout()
+        {
+            try
+            {
+                server.Logout();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool SendMessage(string Username, string Message) {
+            try
+            {
+                server.SendMessage(Crypto.Encrypt(Message));
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
