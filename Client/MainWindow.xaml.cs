@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -33,6 +34,18 @@ namespace CSharkClient
             messageViewModel.Messages.Add(new Message() { Username = "Me", Text = TextInput.Text });
             messageViewModel.SendMessage(textInputContent);
             TextInput.Text = "";
+        }
+
+        private void FileAction(object sender, RoutedEventArgs e)
+        {
+            FileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "All Files|*.*";
+            if (fileDialog.ShowDialog() == true)
+            {
+                string filename = fileDialog.FileName;
+                messageViewModel.Messages.Add(new Message() { Username = "Me", Text = filename });
+                messageViewModel.UploadFile(filename);
+            }
         }
 
         void ClosingWindow(object sender, EventArgs e)

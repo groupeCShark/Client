@@ -10,7 +10,9 @@ namespace CSharkClient
         public event PropertyChangedEventHandler PropertyChanged;
         private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
         public NetworkManager client;
+
         public string Username = "Htime";
+        public string DownloadDirectory = "";
 
         public ObservableCollection<Message> Messages
         {
@@ -77,6 +79,15 @@ namespace CSharkClient
             if (!connected)
             {
                 PrintNetworkErrorMessage("SendMessage");
+            }
+        }
+
+        public void UploadFile(string Filename)
+        {
+            bool connected = client.UploadFile(Filename);
+            if (!connected)
+            {
+                PrintNetworkErrorMessage("UploadFile");
             }
         }
 
