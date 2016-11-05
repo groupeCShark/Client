@@ -3,16 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Local="clr-namespace:CSharkClient"
         Title="CSharkChat" Height="350" Width="525"
-        Closed="ClosingWindow">
+        Closed="ClosingWindow"
+        KeyDown="KeyDownHandler">
     <Window.Resources>
         <DataTemplate x:Key="MyMessagesTemplate">
-            <Grid Margin="4" HorizontalAlignment="Right" Background="#FFDCDCF0">
-                <TextBlock Text="{Binding Display}" Margin="4"/>
+            <Grid Margin="4,4,8,4" HorizontalAlignment="Right">
+                <Border CornerRadius="8" Background="#FFDCDCF0">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="4" ShadowDepth="4" Color="#FFC8C8CD" />
+                    </Border.Effect>
+                    <TextBlock Text="{Binding Display}" Margin="4"/>
+                </Border>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="OthersMessagesTemplate">
-            <Grid Margin="4" HorizontalAlignment="Left" Background="#FFDCF0DC">
-                <TextBlock Text="{Binding Display}" Margin="4"/>
+            <Grid Margin="4,4,8,4" HorizontalAlignment="Left">
+                <Border CornerRadius="8" Background="#FFDCF0DC">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="4" ShadowDepth="4" Color="#FFC8DCC8" />
+                    </Border.Effect>
+                    <TextBlock Text="{Binding Display}" Margin="4"/>
+                </Border>
             </Grid>
         </DataTemplate>
         <Local:MessageTemplateSelector x:Key="messageTemplateSelector" MyMessageTemplate="{StaticResource MyMessagesTemplate}" OthersMessageTemplate="{StaticResource OthersMessagesTemplate}"/>
@@ -28,8 +39,8 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         
-        <ScrollViewer Margin="8" VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
-            <ListView ItemsSource="{Binding Messages}" ItemTemplateSelector="{StaticResource messageTemplateSelector}">
+        <Grid Margin="8" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
+            <ListView x:Name="MessageListView" ItemsSource="{Binding Messages}" ItemTemplateSelector="{StaticResource messageTemplateSelector}" ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Focusable" Value="False"/>
@@ -37,7 +48,7 @@
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
-        </ScrollViewer>
+        </Grid>
         
         <TextBox x:Name="TextInput" TextWrapping="Wrap" Text="" Grid.Column="0" Grid.Row="1" Margin="8,0,8,8" Background="#FFDCDCF0"/>
         <Button x:Name="FileButton" Content="File" Grid.Column="2" Grid.Row="1" Margin="8,0,8,8" Click="FileAction"/>

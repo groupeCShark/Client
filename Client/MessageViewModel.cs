@@ -49,6 +49,12 @@ namespace CSharkClient
             }
         }
 
+        public void AddMessage(string Username, string Text)
+        {
+            Messages.Add(new Message() { Username = Username, Text = Text });
+
+        }
+
         public void Login() {
             bool connected = client.Login(Username);
             if (!connected)
