@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace CSharkClient
 {
@@ -11,7 +12,7 @@ namespace CSharkClient
         private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
         public NetworkManager client;
 
-        public string Username = "Htime";
+        public string Username = "";
         public string DownloadDirectory = "";
 
         public ObservableCollection<Message> Messages
@@ -25,9 +26,35 @@ namespace CSharkClient
 
         public MessageViewModel()
         {
+            Username = ConfigSettings.InitFile();
             client = new NetworkManager(this);
             Login();
             PrintLoggedUsers();
+        }
+
+        public void ProcessInput(string TextInput)
+        {
+            Regex regex = new Regex(@"!(\w+) *([A-Za-z0-9_ ]*)");
+            Match match = regex.Match(TextInput);
+            if (match.Success)
+            {
+                switch (match.Groups[1].Value)
+                {
+                    case "username":
+                        ConfigSettings.EditElement("username", match.Groups[2].Value);
+                        Username = ConfigSettings.ReadElement("username");
+                        Logout();
+                        Login();
+                        break;
+                    default:
+                        AddMessage("Server", "Command not found...");
+                        break;
+                }
+            }
+            else
+            {
+                SendMessage(TextInput);
+            }
         }
 
         private void PrintNetworkErrorMessage(string Message)

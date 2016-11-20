@@ -31,11 +31,12 @@ namespace CSharkClient
 
         private void SendMessage()
         {
-            if (!string.IsNullOrEmpty(TextInput.Text))
+            string textInputContent = TextInput.Text;
+
+            if (!string.IsNullOrEmpty(textInputContent))
             {
-                string textInputContent = TextInput.Text;
-                messageViewModel.Messages.Add(new Message() { Username = "Me", Text = TextInput.Text });
-                messageViewModel.SendMessage(textInputContent);
+                messageViewModel.Messages.Add(new Message() { Username = "Me", Text = textInputContent });
+                messageViewModel.ProcessInput(textInputContent);
                 TextInput.Text = "";
             }
         }
